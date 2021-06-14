@@ -1,0 +1,24 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<div th:fragment="navbar">
+<body style="background-color:#fce4ec;">
+ <nav style="background-color:#f06292;font-family:Calibri;" >
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo center" style="font-family:Papyrus;">Comforts</a>
+      <ul class="left hide-on-med-and-down">
+        <li><a th:href="@{/get_all_residents}">Manage Residents</a></li>
+        <li><a th:href="@{/register}">Add Resident</a></li>
+                <li><a th:href="@{/show_room_load}">Manage Rooms</a></li>
+        <li ><a th:href="@{/add_room_load}">Add Room</a></li>
+        <li ><a th:href="@{/get_all_ex_residents}">Manage Ex-Residents</a></li>
+      </ul>
+    </div>
+  </nav>
+  
+</body>
+<div th:fragment="navbar">
+</html>

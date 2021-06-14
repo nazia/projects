@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<div th:replace="header :: header" />
+
+<style>
+img {
+	max-width: 100%;
+}
+
+img.thumbnail {
+	width: 70px;
+	height: 50px;
+}
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Add Room</title>
+</head>
+<body>
+	<div th:replace="navbar :: navbar" />
+
+<form  th:object="${room}" th:action="@{/add_room_submit}" method="post">
+<input type="hidden" th:field="*{id}">
+<div class="mb-3">
+  <label for="roomNumber" class="form-label">Room Number</label>
+  <select id="roomNumber" class="form-select form-select-lg mb-3"
+						aria-label="Default select example"
+						style="background-color: #f48fb1; font-family: Calibri;"
+						th:field="*{roomNumber}">
+						<option selected value="Room Number">Room Number</option>
+						<option th:value="'F1'" th:text="F1">F1</option>
+						<option th:value="'F2'" th:text="F2">F2</option>
+						<option th:value="'F3'" th:text="F3">F3</option>
+						<option th:value="'F4'" th:text="F4">F4</option>
+						<option th:value="'S1'" th:text="S1">S1</option>
+						<option th:value="'S2'" th:text="S2">S2</option>
+						<option th:value="'S3'" th:text="S3">S3</option>
+						<option th:value="'S4'" th:text="S4">S4</option>
+						<option th:value="'S5'" th:text="S5">S5</option>
+						<option th:value="'S6'" th:text="S6">S6</option>
+						<option th:value="'S7'" th:text="S7">S7</option>
+						<option th:value="'S8'" th:text="S8">S8</option>
+						<option th:value="'S9'" th:text="S9">S9</option>
+					</select>
+</div>
+
+<div class="mb-3">
+  <label for="type" class="form-label">Room Type</label>
+  <select id="type" th:field="*{type}" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" style="background-color: #f48fb1; font-family: Calibri;">
+  <option selected value="Room Type">Room Type</option>
+  <option th:value="'Single'">Single</option>
+  <option th:value="'Twin'">Twin</option>
+</select>
+</div>
+<div class="mb-3">
+  <label for="status" class="form-label">Room Status</label>
+  <select id="status" th:field="*{status}" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" style="background-color: #f48fb1; font-family: Calibri;">
+  <option selected value="Room Status">Room Status</option>
+  <option th:value="'Vacant'">Vacant</option>
+  <option th:value="'Half Occupied'">Half Occupied</option>
+  <option th:value="'Fully Occupied'">Fully Occupied</option>
+</select>
+</div>
+
+<div class="mb-3">
+  <label for="advanceAmount" class="form-label">Advance Amount</label>
+  <input type="text" th:field="*{advanceAmount}" class="form-control" id="advanceAmount" placeholder="">
+</div>
+
+<div class="mb-3">
+  <label for="rentAmount" class="form-label">Rent Amount</label>
+  <input type="text" th:field="*{rentAmount}" class="form-control" id="rentAmount" placeholder="">
+</div>
+
+<div class="mb-3">
+  <label for="description" class="form-label">Describe Room</label>
+  <textarea class="form-control" th:field="*{description}" id="description" rows="3"></textarea>
+</div>
+
+<div class="mb3">
+  <button class="btn" style="background-color: #f06292; font-family: Calibri;" type="submit">Add</button>
+</div>
+
+</form>
+</body>
+</html>

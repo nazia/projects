@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<div th:replace="header :: header" />
+
+<style>
+img {
+	max-width: 50%;
+}
+
+img.thumbnail {
+	width: 100px;
+	height: 100px;
+}
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Show Ex Residents</title>
+</head>
+<body>
+	<div th:replace="navbar :: navbar" />
+	<div>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th scope="col">Pic</th>
+					<th scope="col">Full Name</th>
+					<th scope="col">Mobile Number</th>
+					<th scope="col">Room Number</th>
+					<th scope="col">Address</th>
+					<th scope="col">Email</th>
+					<th scope="col">Actions</th>
+				</tr>
+
+			</thead>
+			<tbody>
+
+				<div th:each="resident : ${residentList}">
+					<tr>
+						
+						<td><img  th:src="${resident.fileName}" class="card-img-top thumbnail img-thumbnail" alt="" width="50" height="40"></td>
+						<th th:text=${resident.fullName}></th>
+						<td th:text=${resident.mobileNumber}></td>
+						<td th:text=${resident.roomNumber}></td>
+						<td th:text=${resident.address}></td>
+						<td th:text=${resident.email}></td>
+						<td>
+						<a class="btn-floating " th:href="@{/update_resident(id=${resident.id})}" style="background-color:#ec407a;font-family:Calibri;"><i class="material-icons">edit</i></a>
+						<a class="btn-floating  " th:href="@{/delete_ex_resident(id=${resident.id})}" style="background-color:#ec407a;font-family:Calibri;"><i class="material-icons">delete</i></a>
+						<a class="btn-floating  " th:href="@{/resident_re_enter(id=${resident.id})}" style="background-color:#ec407a;font-family:Calibri;"><i class="material-icons">transfer_within_a_station</i></a></td>
+					</tr>
+
+
+				</div>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

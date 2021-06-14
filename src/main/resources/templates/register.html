@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<div th:replace="header :: header" />
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<div th:replace="navbar :: navbar" />
+
+
+	<div class="row" style="text-align: center">
+		<form class="col s12" th:action="@{/register_resident}" method="post" enctype="multipart/form-data"
+			th:object="${resident}">
+			<div class="row mt-5">
+				<div class="input-field col s6">
+					<input id="full_name" name="full_name" type="text" class="validate"
+						th:field="*{fullName}" required="true"> <label
+						for="full_name">Full Name</label>
+				</div>
+
+				<div class="input-field col s6 ">
+					<i class="material-icons prefix">phone_android</i> <input
+						id="mobile" type="tel" class="validate" data-length="10"
+						th:field="*{mobileNumber}"> <label for="mobile">Mobile</label>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="input-field col s6 ">
+					<input id="advance_amount" type="number" class="validate"
+						th:field="*{advanceAmount}"> <label for="advance_amount">Advance
+						Amount</label>
+				</div>
+
+				<div class="input-field col s6 ">
+					<input id="rent_amount" type="number" class="validate"
+						th:field="*{rentAmount}"> <label for="rent_amount">Rent
+						Amount</label>
+				</div>
+			</div>
+			<div class="row">
+
+
+				<div class="input-field col s3">
+					<select class="form-select"
+						style="background-color: #f48fb1; font-family: Calibri;"
+						th:field="*{tcSubmitted}">
+						<option selected th:value="TermsAccepted">Terms Accepted</option>
+						<option th:value="'Yes'" th:text="Yes">Yes, Terms Accepted</option>
+						<option th:value="'No'" th:text="No">Not Yet accepted Terms</option>
+					</select>
+				</div>
+
+
+				<div class="input-field col s3">
+					<select class="form-select"
+						style="background-color: #f48fb1; font-family: Calibri;"
+						th:field="*{inductionComplete}">
+						<option selected th:value="InductionComplete">Induction Complete</option>
+						<option th:value="'Yes'" th:text="Yes">Yes, Induction Complete</option>
+						<option th:value="'No'" th:text="No">Not Yet Induction Complete</option>
+					</select>
+				</div>
+
+
+
+				<div class="input-field col s3">
+					<select id="room_number" class="form-select"
+						aria-label="Default select example"
+						style="background-color: #f48fb1; font-family: Calibri;"
+						th:field="*{roomNumber}">
+						<option selected value="Room Number">Room Number</option>
+						<option th:value="'F1'" th:text="F1">F1</option>
+						<option th:value="'F2'" th:text="F2">F2</option>
+						<option th:value="'F3'" th:text="F3">F3</option>
+						<option th:value="'F4'" th:text="F4">F4</option>
+						<option th:value="'S1'" th:text="S1">S1</option>
+						<option th:value="'S2'" th:text="S2">S2</option>
+						<option th:value="'S3'" th:text="S3">S3</option>
+						<option th:value="'S4'" th:text="S4">S4</option>
+						<option th:value="'S5'" th:text="S5">S5</option>
+						<option th:value="'S6'" th:text="S6">S6</option>
+						<option th:value="'S7'" th:text="S7">S7</option>
+						<option th:value="'S8'" th:text="S8">S8</option>
+						<option th:value="'S9'" th:text="S9">S9</option>
+					</select>
+				</div>
+
+				<div class="input-field col s3">
+					<select class="form-select"
+						style="background-color: #f48fb1; font-family: Calibri;"
+						th:field="*{maritalStatus}">
+						<option selected th:value="MaritalStatus">Marital Status</option>
+						<option th:value="'Unmarried'" th:text="Unmarried">Unmarried</option>
+						<option th:value="'Married'" th:text="Married">Married</option>
+						<option th:value="'Divorced'" th:text="Divorced">Divorced</option>
+					</select>
+				</div>
+			</div>
+			<div class="row">
+
+				<div class="input-field col s3 mb-3">
+					<label for="resident_picture" class="form-label">Resident
+						Picture</label> <input class="form-control" type="file"
+						id="resident_picture" name="resident_picture">
+				</div>
+				<div class="input-field col s3 mb-3">
+					<label for="resident_id_proof" class="form-label">Resident
+						ID</label> <input class="form-control" type="file" id="resident_id_proof" name="resident_id_proof">
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s9">
+					<textarea id="address" class="materialize-textarea"
+						th:field="*{address}"></textarea>
+					<label for="address">Address</label>
+				</div>
+				<div class="input-field col s3 ">
+					<input id="email" type="email" class="validate" th:field="*{email}">
+					<label for="email">Email</label>
+				</div>
+			</div>
+
+
+			<button class="btn waves-effect waves-light " type="submit"
+				name="action"
+				style="background-color: #f06292; font-family: Calibri;">
+				Submit <i class="material-icons right">send</i>
+			</button>
+
+		</form>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+		crossorigin="anonymous"></script>
+	<script>
+		var dropdowns = document.querySelectorAll('.dropdown-trigger')
+		for (var i = 0; i < dropdowns.length; i++) {
+			M.Dropdown.init(dropdowns[i]);
+		}
+
+		document.addEventListener('DOMContentLoaded', function() {
+			var elems = document.querySelectorAll('select');
+			var instances = M.FormSelect.init(elems, options);
+		});
+
+		$(document).ready(function() {
+			$('select').formSelect();
+		});
+	</script>
+</body>
+</html>

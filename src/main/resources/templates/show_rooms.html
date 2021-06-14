@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<div th:replace="header :: header" />
+
+<style>
+img {
+	max-width: 100%;
+}
+
+img.thumbnail {
+	width: 70px;
+	height: 50px;
+}
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Manage Room</title>
+</head>
+<body>
+	<div th:replace="navbar :: navbar" />
+
+	<div>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th scope="col">ID</th>
+					<th scope="col">Room Number</th>
+					<th scope="col">Room Type</th>
+					<th scope="col">Advance Amount</th>
+					<th scope="col">Rent Amount</th>
+					<th scope="col">Room Status</th>
+					<th scope="col">Actions</th>
+				</tr>
+
+			</thead>
+			<tbody>
+
+				<div th:each="room : ${roomList}">
+					<tr>
+						<td scope="row" th:text=${room.id}></td>
+						<th th:text=${room.roomNumber}></th>
+						<td th:text=${room.type}></td>
+						<td th:text=${room.advanceAmount}></td>
+						<td th:text=${room.rentAmount}></td>
+						<td th:text=${room.status}></td>
+						<td>
+						<a class="btn-floating " th:href="@{/update_room_load(id=${room.id})}" style="background-color:#ec407a;font-family:Calibri;"><i class="material-icons">edit</i></a>
+						<a class="btn-floating  " th:href="@{/delete_room(id=${room.id})}" style="background-color:#ec407a;font-family:Calibri;"><i class="material-icons">delete</i></a>
+					</tr>
+
+
+				</div>
+			</tbody>
+		</table>
+	</div>
+	
+</body>
+</html>
